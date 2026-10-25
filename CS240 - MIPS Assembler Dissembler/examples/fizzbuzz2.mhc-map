@@ -1,0 +1,20 @@
+# MHC section/symbol metadata; no source text or instructions.
+format=mhc-map-1
+byteOrder=big-endian
+textBase=0x00400000
+dataBase=0x10010000
+textWords=41
+dataBytes=19
+stringCount=3
+string.0=0:5
+string.1=5:5
+string.2=10:9
+symbol.fizz=data:0
+symbol.buzz=data:5
+symbol.fizzbuzz=data:10
+symbol.WhichBranch=text:20
+symbol.printEnd=text:72
+symbol.printFizzBuzz=text:96
+symbol.printFizz=text:116
+symbol.printBuzz=text:136
+symbol.Exit=text:156

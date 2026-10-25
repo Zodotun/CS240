@@ -1,0 +1,38 @@
+MHC Java deliverable validation
+Date: 2026-10-25
+Runtime: OpenJDK 17.0.20, Linux x86_64
+
+Build:
+  Java compiler: --release 17 -Xlint:all
+  Result: compiled without warnings; executable mhc.jar created.
+
+Java regression suite:
+  PASS: 1120 assertions.
+  Fixed instruction-encoding vectors and immediate/branch boundaries.
+  500 seeded random 32-bit constant loads: decode/re-encode and execution.
+  Invalid operands, undefined/duplicate labels, unsupported instructions,
+  malformed encoding fields, partial instruction words, and bad ASCII input.
+  Full .mhc-ascii and .mhc-bin round trips, preserving instructions, data,
+  and symbol addresses; escaped strings, empty strings, alias/end labels.
+  Independent test interpreter: exact FizzBuzz output for integers 1..100.
+
+Executable JAR integration checks:
+  PASS: both input formats decode and reassemble byte-for-byte.
+  PASS: both formats decode without a map using --text-only.
+  PASS: malformed machine-code files fail with a nonzero exit code.
+  PASS: inconsistent map/data sizes and unsupported maps are rejected.
+  PASS: an output path cannot overwrite the source/machine-code input.
+  PASS: assembly errors identify the source line and emit no output files.
+
+Supplied program output:
+  Instructions after expansion: 41
+  .mhc-bin: 164 bytes (4 per instruction)
+  .mhc-ascii: 1312 readable bits + 41 LF = 1353 bytes
+  .data.mhc-bin: 19 bytes
+  .data.mhc-ascii: 152 readable bits + 5 LF = 157 bytes
+
+Limits:
+  Tested with disabled branch delay slots and MARS/SPIM-style syscall services.
+  Not compared byte-for-byte against MARS, whose pseudoinstruction expansions
+  can differ. No claim of hardware execution or full MIPS ISA support.
+  Windows build script provided; Windows execution not tested here.
