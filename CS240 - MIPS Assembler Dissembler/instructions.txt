@@ -1,0 +1,2 @@
+java -jar mhc.jar assemble examples/fizzbuzz2.asm
+java -jar mhc.jar disassemble examples/fizzbuzz2.mhc-bin decoded.asm
